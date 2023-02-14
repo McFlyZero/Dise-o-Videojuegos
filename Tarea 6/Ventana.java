@@ -22,8 +22,8 @@ public class Ventana extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Thread t1 = new Thread(img1);
                 t1.start();
-               // Thread t2 = new Thread(img2);
-              //  t2.start();
+                // Thread t2 = new Thread(img2);
+                //  t2.start();
                 btnStart.setEnabled(false);
                 /*Thread t3 = new Thread() {
                     public void run() {
@@ -44,6 +44,7 @@ public class Ventana extends JFrame {
         //add(img2);
 
         btnStart.addActionListener(listener);
+        img1.addKeyListener(img1);
 
         setTitle("Tarea 5");
         setSize(300, 300);
