@@ -8,7 +8,7 @@ public class Ventana extends JFrame {
 
     private void initValues() {
         JButton btnStart = new JButton("Start");
-        Imagen img1 = new Imagen("images/mario1.png", "images/mario2.png", 1, 40);
+        Imagen img1 = new Imagen("images/mario1.png", "images/mario2.png", 1, 60);
         //Imagen img2 = new Imagen("/images/link1.png", "/images/link2.png", 1, 90);
 
         btnStart.setBounds(10, 10, 75, 25);

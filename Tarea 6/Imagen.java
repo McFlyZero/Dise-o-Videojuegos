@@ -10,7 +10,7 @@ public class Imagen extends JLabel implements Runnable, KeyListener {
     boolean flag2 = true;
     int x = speed;
     int limit = 250;
-    private boolean runStatus = false, right = false, left = false, shift = false;
+    private boolean runStatus = false, right = false, left = false, shift = false, up = false;
 
     public Imagen(String url1, String url2, int speed, int posY) {
         this.url1 = url1;
@@ -28,8 +28,16 @@ public class Imagen extends JLabel implements Runnable, KeyListener {
         while (runStatus) {
             try {
                 Thread.sleep(10);
+                if (up) {
+                    posY = 40;
+                } else {
+                    posY = 60;
+                }
+                
                 if (right) {
+                    
                     if (x < limit) {
+
                         if (shift) {
                             x = x + 20;
                         } else {
@@ -91,6 +99,9 @@ public class Imagen extends JLabel implements Runnable, KeyListener {
             }
             if (ke.getKeyCode() == KeyEvent.VK_SHIFT) {
                 shift = true;
+            }
+            if (ke.getKeyCode() == KeyEvent.VK_UP) {
+                up = true;
             }
         }
 
@@ -162,6 +173,9 @@ public class Imagen extends JLabel implements Runnable, KeyListener {
             }
             if (ke.getKeyCode() == KeyEvent.VK_SHIFT) {
                 shift = false;
+            }
+            if (ke.getKeyCode() == KeyEvent.VK_UP) {
+                up = false;
             }
         }
     }
