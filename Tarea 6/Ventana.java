@@ -12,7 +12,7 @@ public class Ventana extends JFrame {
         //Imagen img2 = new Imagen("/images/link1.png", "/images/link2.png", 1, 90);
 
         btnStart.setBounds(10, 10, 75, 25);
-        img1.setBounds(0, 40, 42, 42);
+        img1.setBounds(0, 60, 42, 42);
         //img2.setBounds(0, 90, 42, 42);
         img1.setFocusable(true);
        //img2.setFocusable(true);
@@ -46,7 +46,7 @@ public class Ventana extends JFrame {
         btnStart.addActionListener(listener);
         img1.addKeyListener(img1);
 
-        setTitle("Tarea 5");
+        setTitle("Tarea 6");
         setSize(300, 300);
         setResizable(false);
         setLayout(null);

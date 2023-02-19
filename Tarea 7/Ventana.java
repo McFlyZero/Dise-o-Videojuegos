@@ -7,48 +7,36 @@ public class Ventana extends JFrame {
     }
 
     private void initValues() {
+        JLabel background = new JLabel(new ImageIcon("images/background.png"));
         JButton btnStart = new JButton("Start");
-        Imagen img1 = new Imagen("images/mario1.png", "images/mario2.png", 1, 60);
-        //Imagen img2 = new Imagen("/images/link1.png", "/images/link2.png", 1, 90);
-
-        btnStart.setBounds(10, 10, 75, 25);
-        img1.setBounds(0, 60, 42, 42);
-        //img2.setBounds(0, 90, 42, 42);
-        img1.setFocusable(true);
-       //img2.setFocusable(true);
+        Imagen img1 = new Imagen("images/mario1.png", "images/mario2.png", 1, 40);
         
+        background.setBounds(0, 0, 500, 100);
+        btnStart.setBounds(10, 10, 75, 25);
+        img1.setBounds(0, 90, 42, 42);
+        
+        background.setVisible(true);
+        img1.setFocusable(true);
+        background.setFocusable(false);
 
         ActionListener listener = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Thread t1 = new Thread(img1);
                 t1.start();
-                // Thread t2 = new Thread(img2);
-                //  t2.start();
                 btnStart.setEnabled(false);
-                /*Thread t3 = new Thread() {
-                    public void run() {
-                        try {
-                            t1.join();
-                            btnStart.setEnabled(true);
-                        } catch (Exception ex) {
-                            System.out.println("Error: " + ex.getMessage());
-                        }
-                    }
-                };
-                t3.start();*/
             }
         };
 
-        add(btnStart);
-        add(img1);
-        //add(img2);
+        add(background);
+        background.add(btnStart);
+        background.add(img1);
 
         btnStart.addActionListener(listener);
         img1.addKeyListener(img1);
 
-        setTitle("Tarea 5");
-        setSize(300, 300);
-        setResizable(false);
+        setTitle("Tarea 7");
+        setSize(500, 140);
+        setResizable(true);
         setLayout(null);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

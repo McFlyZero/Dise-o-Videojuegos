@@ -29,13 +29,17 @@ public class Imagen extends JLabel implements Runnable, KeyListener {
             try {
                 Thread.sleep(10);
                 if (up) {
-                    posY = 40;
-                } else {
-                    posY = 60;
+                    // posY = 40;
+                    jump();
                 }
-                
+                /*
+                 * else {
+                 * posY = 60;
+                 * }
+                 */
+
                 if (right) {
-                    
+
                     if (x < limit) {
 
                         if (shift) {
@@ -83,6 +87,24 @@ public class Imagen extends JLabel implements Runnable, KeyListener {
         }
     }
 
+    private void jump() {
+        try {
+            System.out.println("Entré a salto");
+            for (int i = 0; i < 20; i++) {
+                posY = posY - 1;
+                setBounds(x, posY, 42, 42);
+                Thread.sleep(5);
+            }
+            for (int i = 0; i < 20; i++) {
+                posY = posY + 1;
+                setBounds(x, posY, 42, 42);
+                Thread.sleep(2);
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
     @Override
     public void keyTyped(KeyEvent ke) {
         System.out.println("Entré a keyTyped");
@@ -104,62 +126,6 @@ public class Imagen extends JLabel implements Runnable, KeyListener {
                 up = true;
             }
         }
-
-        /*
-         * switch (ke.getKeyCode()) {
-         * 
-         * case KeyEvent.VK_RIGHT:
-         * System.out.println("Derecha");
-         * if (x < limit) {
-         * System.out.println("Shift: " + ke.isShiftDown());
-         * if (ke.isShiftDown()) {
-         * System.out.println("Shift presionado");
-         * x = x + 20;
-         * }else{
-         * x = x + 5;
-         * }
-         * 
-         * if (flag) {
-         * icon = new ImageIcon(this.getClass().getResource(url1));
-         * } else {
-         * icon = new ImageIcon(this.getClass().getResource(url2));
-         * }
-         * 
-         * flag = !flag;
-         * setIcon(icon);
-         * setBounds(x, posY, 42, 42);
-         * break;
-         * }
-         * 
-         * case KeyEvent.VK_LEFT:
-         * if (x > 0) {
-         * System.out.println("Izquierda");
-         * if (ke.isShiftDown()) {
-         * System.out.println("Shift presionado");
-         * x = x - 20;
-         * }else{
-         * x = x - 5;
-         * }
-         * 
-         * if (flag2) {
-         * icon = new ImageIcon(this.getClass().getResource(url1));
-         * } else {
-         * icon = new ImageIcon(this.getClass().getResource(url2));
-         * }
-         * 
-         * flag2 = !flag2;
-         * setIcon(icon);
-         * setBounds(x, posY, 42, 42);
-         * break;
-         * }
-         * 
-         * default:
-         * System.out.println("Otra tecla");
-         * break;
-         * 
-         * }
-         */
-
     }
 
     @Override

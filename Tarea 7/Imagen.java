@@ -5,11 +5,10 @@ public class Imagen extends JLabel implements Runnable, KeyListener {
     ImageIcon icon;
     String url1, url2;
     int speed;
-    int posY;
-    boolean flag = true;
-    boolean flag2 = true;
+    boolean flag = true, flag2 = true;
     int x = speed;
     int limit = 250;
+    int posX = 10, posY = 90;
     private boolean runStatus = false, right = false, left = false, shift = false, up = false;
 
     public Imagen(String url1, String url2, int speed, int posY) {
@@ -25,27 +24,25 @@ public class Imagen extends JLabel implements Runnable, KeyListener {
     public void run() {
         runStatus = true;
         System.out.println("runStatus: " + runStatus);
+        
         while (runStatus) {
+            System.out.println("Running");
             try {
-                Thread.sleep(10);
-                if (up) {
-                    // posY = 40;
+                if(up){
+                    //posY = 75;
                     jump();
+                }else{
+                    //posY = 90;
                 }
-                /*
-                 * else {
-                 * posY = 60;
-                 * }
-                 */
 
                 if (right) {
-
+                    
                     if (x < limit) {
 
                         if (shift) {
-                            x = x + 20;
+                            x = x + 10;
                         } else {
-                            x = x + 5;
+                            x = x + 3;
                         }
 
                         if (flag) {
@@ -87,24 +84,6 @@ public class Imagen extends JLabel implements Runnable, KeyListener {
         }
     }
 
-    private void jump() {
-        try {
-            System.out.println("Entré a salto");
-            for (int i = 0; i < 20; i++) {
-                posY = posY - 1;
-                setBounds(x, posY, 42, 42);
-                Thread.sleep(5);
-            }
-            for (int i = 0; i < 20; i++) {
-                posY = posY + 1;
-                setBounds(x, posY, 42, 42);
-                Thread.sleep(2);
-            }
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
-
     @Override
     public void keyTyped(KeyEvent ke) {
         System.out.println("Entré a keyTyped");
@@ -126,62 +105,6 @@ public class Imagen extends JLabel implements Runnable, KeyListener {
                 up = true;
             }
         }
-
-        /*
-         * switch (ke.getKeyCode()) {
-         * 
-         * case KeyEvent.VK_RIGHT:
-         * System.out.println("Derecha");
-         * if (x < limit) {
-         * System.out.println("Shift: " + ke.isShiftDown());
-         * if (ke.isShiftDown()) {
-         * System.out.println("Shift presionado");
-         * x = x + 20;
-         * }else{
-         * x = x + 5;
-         * }
-         * 
-         * if (flag) {
-         * icon = new ImageIcon(this.getClass().getResource(url1));
-         * } else {
-         * icon = new ImageIcon(this.getClass().getResource(url2));
-         * }
-         * 
-         * flag = !flag;
-         * setIcon(icon);
-         * setBounds(x, posY, 42, 42);
-         * break;
-         * }
-         * 
-         * case KeyEvent.VK_LEFT:
-         * if (x > 0) {
-         * System.out.println("Izquierda");
-         * if (ke.isShiftDown()) {
-         * System.out.println("Shift presionado");
-         * x = x - 20;
-         * }else{
-         * x = x - 5;
-         * }
-         * 
-         * if (flag2) {
-         * icon = new ImageIcon(this.getClass().getResource(url1));
-         * } else {
-         * icon = new ImageIcon(this.getClass().getResource(url2));
-         * }
-         * 
-         * flag2 = !flag2;
-         * setIcon(icon);
-         * setBounds(x, posY, 42, 42);
-         * break;
-         * }
-         * 
-         * default:
-         * System.out.println("Otra tecla");
-         * break;
-         * 
-         * }
-         */
-
     }
 
     @Override
@@ -199,6 +122,24 @@ public class Imagen extends JLabel implements Runnable, KeyListener {
             if (ke.getKeyCode() == KeyEvent.VK_UP) {
                 up = false;
             }
+        }
+    }
+
+    private void jump() {
+        try {
+            System.out.println("Entré a salto");
+            for (int i = 0; i < 20; i++) {
+                posY = posY - 1;
+                setBounds(x, posY, 42, 42);
+                Thread.sleep(5);
+            }
+            for (int i = 0; i < 20; i++) {
+                posY = posY + 1;
+                setBounds(x, posY, 42, 42);
+                Thread.sleep(2);
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
 
