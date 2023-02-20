@@ -9,7 +9,7 @@ public class Imagen extends JLabel implements Runnable, KeyListener {
     int x = speed;
     int limit = 250;
     int posX = 10, posY = 90;
-    private boolean runStatus = false, right = false, left = false, shift = false, up = false;
+    boolean runStatus = false, right = false, left = false, shift = false, up = false;
 
     public Imagen(String url1, String url2, int speed, int posY) {
         this.url1 = url1;
@@ -26,23 +26,19 @@ public class Imagen extends JLabel implements Runnable, KeyListener {
         System.out.println("runStatus: " + runStatus);
         
         while (runStatus) {
-            System.out.println("Running");
+            //System.out.println("Running");
             try {
                 if(up){
-                    //posY = 75;
+                    Thread.sleep(5);
                     jump();
-                }else{
-                    //posY = 90;
                 }
-
                 if (right) {
-                    
-                    if (x < limit) {
-
+                    if (x <= limit) {
+                        Thread.sleep(5);
                         if (shift) {
-                            x = x + 10;
+                            x = x + 20;
                         } else {
-                            x = x + 3;
+                            x = x + 5;
                         }
 
                         if (flag) {
@@ -58,7 +54,8 @@ public class Imagen extends JLabel implements Runnable, KeyListener {
                 }
 
                 if (left) {
-                    if (x > 0) {
+                    if (x >= 0) {
+                        Thread.sleep(5);
                         if (shift) {
                             x = x - 20;
                         } else {
@@ -76,6 +73,7 @@ public class Imagen extends JLabel implements Runnable, KeyListener {
                         setBounds(x, posY, 42, 42);
                     }
                 }
+                Thread.sleep(30);
 
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
