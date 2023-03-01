@@ -25,7 +25,7 @@ class Ventana3 extends JFrame{
         img.setFocusable(true);
         btnStart.setFocusable(false);
 
-        img.setBounds(10,11,42,42);
+        img.setBounds(10,14,42,42);
         background.setBounds(0,0,510,72);
         base.setBounds(0,55,160,17);
 		btnStart.setBounds(10,80,75,25);
