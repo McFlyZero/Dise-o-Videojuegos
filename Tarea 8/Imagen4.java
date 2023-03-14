@@ -6,7 +6,7 @@ public class Imagen4 extends JLabel implements Runnable, KeyListener {
 
     private String url1, url2;
     private ImageIcon icon;
-    JLabel base;
+    JLabel base, base2;
     private int y = 14, posX = 10;
     private boolean runStatus = false, right = false, up = false, changeImg = false;
 
@@ -23,8 +23,13 @@ public class Imagen4 extends JLabel implements Runnable, KeyListener {
         while (true) {
             if (interseccion()) {
                 gravedad(0,50);
-                if (right){ moveImagen(1, 50); }
-                if (up){}
+                if (right){ moveImagen(5, 50); }
+                if (right && up) {
+					saltote(40);
+				}
+				if (up) {
+					saltito(20);
+				}
             }else{
                 gravedad(5, 10);
             }
@@ -57,9 +62,46 @@ public class Imagen4 extends JLabel implements Runnable, KeyListener {
     public boolean interseccion() {
         Area aBase = new Area(base.getBounds());
         Area aMario = new Area(this.getBounds());
+        Area aBase2 = new Area(base2.getBounds());
 
-        return aBase.intersects(aMario.getBounds2D());
+        boolean collide = aBase.intersects(aMario.getBounds2D()) || aBase2.intersects(aMario.getBounds2D());
+        return collide;
     }
+
+    private void saltito(int time) {
+        //Implementar gravedad
+		for (int y = 14; y >= 0; y--) {
+			setBounds(getX(), y, 42, 42);
+			try {
+				Thread.sleep(time);
+			} catch (Exception e) {
+			}
+		}
+		for (int y = getY(); y <= 14; y++) {
+			setBounds(getX(), y, 42, 42);
+			try {
+				Thread.sleep(time);
+			} catch (Exception e) {
+			}
+		}
+	}
+
+	private void saltote(int time) {
+		for (int y = 14; y >= 0; y--) {
+			setBounds(posX += 5, y, 42, 42);
+			try {
+				Thread.sleep(time);
+			} catch (Exception e) {
+			}
+		}
+		for (int y = getY(); y <= 14; y++) {
+			setBounds(posX += 5, y, 42, 42);
+			try {
+				Thread.sleep(time);
+			} catch (Exception e) {
+			}
+		}
+	}
 
     public void keyTyped(KeyEvent e) {
     }// end keyTyped
