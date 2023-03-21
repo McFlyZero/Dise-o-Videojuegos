@@ -6,6 +6,7 @@ public class Kemonito extends JLabel implements Runnable, KeyListener {
     private String url1, url2;
     private ImageIcon icon;
     private boolean moveStatus = false, pausar = false, stop = false, runStatus = false, bandera = true;
+    
 
     public Kemonito(String url1, String url2) {
         this.url1 = url1;
