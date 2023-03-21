@@ -5,6 +5,7 @@ public class Kemonito extends JLabel implements Runnable, KeyListener {
 
     private String url1, url2;
     private ImageIcon icon;
+    private Sonido sonido;
     private boolean moveStatus = false, pausar = false, stop = false, runStatus = false, bandera = true;
     
 
@@ -13,6 +14,10 @@ public class Kemonito extends JLabel implements Runnable, KeyListener {
         this.url2 = url2;
         icon = new ImageIcon(this.getClass().getResource(url1));
         setIcon(icon);
+    }
+
+    public void setSonido(Sonido sonido) {
+        this.sonido = sonido;
     }
 
     public void run() {
@@ -50,17 +55,20 @@ public class Kemonito extends JLabel implements Runnable, KeyListener {
 
     synchronized public void pausarHilo() {
         pausar = true;
+        sonido.pause();
     }
 
     synchronized public void reanudarHilo() {
         pausar = false;
         notify();
+        sonido.resume();
     }
 
     synchronized public void stopHilo() {
         stop = true;
         pausar = false;
         notify();
+        sonido.stopAlto();
     }
 
     public void keyTyped(KeyEvent e) {

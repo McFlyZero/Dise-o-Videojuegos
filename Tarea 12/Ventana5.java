@@ -3,9 +3,7 @@ import java.awt.event.*;
 
 class Ventana5 extends JFrame {
 
-    // Sonido sonido;
-    // Marnie Battle Theme
-    Sonido sonido = new Sonido("sounds/marniebattletheme.wav"); // Formato de 8 bits
+    Sonido sonido;
 
     public Ventana5() {
         initValues();
@@ -31,8 +29,11 @@ class Ventana5 extends JFrame {
             public void actionPerformed(ActionEvent ae) {
                 if (ae.getSource() == btnStart) {
                     // sonido = new Sonido("sounds/mario1v2.wav"); //Formato de 8 bits
+                    // Marnie Battle Theme
+                    sonido = new Sonido("sounds/marniebattletheme.wav"); // Formato de 8 bits
                     Thread t = new Thread(monito);
                     t.start();
+                    monito.setSonido(sonido);
                     sonido.play();
 
                 } else if (ae.getSource() == btnPause) {
