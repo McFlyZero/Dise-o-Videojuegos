@@ -6,6 +6,7 @@ public class Kemonito extends JLabel implements Runnable, KeyListener {
     private String url1, url2;
     private ImageIcon icon;
     private boolean moveStatus = false, pausar = false, stop = false, runStatus = false, bandera = true;
+    Circulo1 c1;
 
     public Kemonito(String url1, String url2) {
         this.url1 = url1;
@@ -17,7 +18,7 @@ public class Kemonito extends JLabel implements Runnable, KeyListener {
     public void run() {
         runStatus = true;
         stop = false;
-        for (int x = 10; x <= 200; x += 3) {
+        for (int x = 10; x <= 1000; x += 3) {
             if (moveStatus) {
                 icon = new ImageIcon(this.getClass().getResource(url1));
                 moveStatus = false;
@@ -29,7 +30,7 @@ public class Kemonito extends JLabel implements Runnable, KeyListener {
             setBounds(x, 10, 42, 42);
 
             try {
-                Thread.sleep(100);
+                Thread.sleep(10);
             } catch (Exception e) {
             }
 
@@ -44,6 +45,9 @@ public class Kemonito extends JLabel implements Runnable, KeyListener {
                 } // end synchronized
             } catch (Exception e) {
             }
+            c1.moverCirculo();
+            c1.moverLinea();
+            c1.repaint();
         } // end for
     }// end run
 

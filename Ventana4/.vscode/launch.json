@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "reloj",
+            "request": "launch",
+            "mainClass": "reloj",
+            "projectName": "Ventana4_8f13668e"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "Main",
