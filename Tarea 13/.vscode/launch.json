@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "Tarea 13_f1b6f71a"
+        },
+        {
+            "type": "java",
             "name": "reloj",
             "request": "launch",
             "mainClass": "reloj",
